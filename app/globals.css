@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body{
+    color: #352F36;
+}
+
+p{
+    color: #797979;
+}
