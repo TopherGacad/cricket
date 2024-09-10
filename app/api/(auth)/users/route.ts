@@ -23,6 +23,7 @@ export const POST = async (request: Request) => {
   try {
     //receive the data to post request
     const body = await request.json();
+    console.log("Received body:", body);  
     await connect();
     const newUser = new User(body);
     await newUser.save();
@@ -32,6 +33,7 @@ export const POST = async (request: Request) => {
       { status: 200 }
     );
   } catch (error: any) {
+    console.error("Error in POST /api/users:", error); 
     return new NextResponse("Error in creating user" + error.message, {
       status: 500,
     });

@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Cricket",
-  description: "Gitrush",
+  description: "By: Gitrush",
 };
 
 export default function RootLayout({
