@@ -20,7 +20,7 @@ const handleLogout = async () => {
     localStorage.removeItem('authToken');
 
     // Optionally, redirect the user or update the UI
-    window.location.href = '/signin'; // Redirect to the login page
+    window.location.href = '/login'; // Redirect to the login page
   } catch (error) {
     console.error('Error logging out:', error);
     // Optionally, show an error message

@@ -12,7 +12,7 @@ export const POST = async (request: Request) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return new NextResponse("User not found", { status: 404 });
+      return new NextResponse(JSON.stringify("User not found"), { status: 404 });
     }
 
     // Check if the provided password matches the hashed password in the database
@@ -30,6 +30,6 @@ export const POST = async (request: Request) => {
     );
   } catch (error: any) {
     console.error("Error in POST /api/login:", error);
-    return new NextResponse("Error in login" + error.message, { status: 500 });
+    return new NextResponse(JSON.stringify("Error in login" + error.message), { status: 500 });
   }
 };
