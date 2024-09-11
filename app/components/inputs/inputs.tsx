@@ -9,8 +9,9 @@ interface InputProps{
     id: string;
     type?: string;
     required?: boolean;
-    errors: FieldErrors;
     disabled?: boolean;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Inputs: React.FC<InputProps> = ({
@@ -20,8 +21,9 @@ const Inputs: React.FC<InputProps> = ({
     id,
     type,
     required,
-    errors,
-    disabled
+    disabled,
+    onChange,
+    value
 }) => {
     return(
         <div className="flex justify-center items-center w-full mb-[30px]">
@@ -34,6 +36,9 @@ const Inputs: React.FC<InputProps> = ({
                 id={id}
                 placeholder={title}
                 disabled={disabled}
+                required={required}
+                value={value}
+                onChange={onChange}
                 className={clsx(
                     `
                     px-[20px]
