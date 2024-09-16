@@ -1,41 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function dashboard() {
-const handleLogout = async () => {
-  try {
-    const response = await fetch('/api/logout', {
-      method: 'POST',
-    });
+export default function Dashboard() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true); // Set loading state
+  const router = useRouter();
 
-    const data = await response.json();
+  useEffect(() => {
+    // Simulate authentication check
+    const authToken = localStorage.getItem('authToken');
 
-    if (!response.ok) {
-      throw new Error(data.message || 'Logout failed');
+    if (!authToken) {
+      // Redirect to login if the token doesn't exist
+      router.push('/login');
+    } else {
+      // If token exists, mark the user as authenticated
+      setIsAuthenticated(true);
     }
+    setLoading(false); // Done checking
+  }, [router]);
 
-    // Clear local storage or cookies if necessary
-    // For example, clear authToken if stored in localStorage
-    localStorage.removeItem('authToken');
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+      });
 
-    // Optionally, redirect the user or update the UI
-    window.location.href = '/login'; // Redirect to the login page
-  } catch (error) {
-    console.error('Error logging out:', error);
-    // Optionally, show an error message
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Logout failed');
+      }
+
+      // Clear local storage or cookies if necessary
+      localStorage.removeItem('authToken');
+
+      // Redirect the user to the login page
+      router.push('/login');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>; // Show a loading indicator while checking
   }
-};
 
-    return (
-      <>
-        <div className="bg-white">DASHBOARD</div>
-        <button onClick={handleLogout}>
-          Logout
-        </button>
-
-      </>
-      
-      
-    );
+  if (!isAuthenticated) {
+    return null; // Do not render anything if not authenticated
   }
+
+  return (
+    <>
+      <div className="bg-white">DASHBOARD</div>
+      <button onClick={handleLogout}>
+        Logout
+      </button>
+    </>
+  );
+}
