@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Cookies from 'js-cookie';  // We'll use this library to easily manage cookies
+import Loading from "../login/loading";
 
 export default function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -9,8 +11,8 @@ export default function Dashboard() {
   const router = useRouter();
 
   useEffect(() => {
-    // Simulate authentication check
-    const authToken = localStorage.getItem('authToken');
+    // Check authentication using cookies
+    const authToken = Cookies.get('authToken'); // Read the cookie
 
     if (!authToken) {
       // Redirect to login if the token doesn't exist
@@ -34,8 +36,8 @@ export default function Dashboard() {
         throw new Error(data.message || 'Logout failed');
       }
 
-      // Clear local storage or cookies if necessary
-      localStorage.removeItem('authToken');
+      // Clear cookie on logout
+      Cookies.remove('authToken');  // Remove the authToken cookie
 
       // Redirect the user to the login page
       router.push('/login');
@@ -45,7 +47,7 @@ export default function Dashboard() {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Show a loading indicator while checking
+    return <Loading/>
   }
 
   if (!isAuthenticated) {
