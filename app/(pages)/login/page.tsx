@@ -4,7 +4,7 @@ import Inputs from '@/app/components/inputs/inputs';
 import { MdAlternateEmail, MdLockOutline } from "react-icons/md";
 import { FieldValues, useForm } from "react-hook-form";
 import { useState, useEffect } from 'react';
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Cookies from 'js-cookie';  // For cookie management
 import Buttons from '@/app/components/buttons/buttons';
 import { IoArrowForward } from 'react-icons/io5';
@@ -23,15 +23,32 @@ export default function Login() {
   });
 
   // Check if the user is already authenticated and redirect if they are
+  // useEffect(() => {
+  //   const authToken = Cookies.get('authToken');
+  //   if (authToken) {
+  //     router.push('/dashboard'); // Redirect to dashboard if already logged in
+      
+  //   } else {
+  //     setIsLoading(false);
+  //   }
+  // }, [router]);
+
+  const pathname = usePathname(); // Get the current path
+
   useEffect(() => {
     const authToken = Cookies.get('authToken');
+
     if (authToken) {
-      router.push('/dashboard'); // Redirect to dashboard if already logged in
-      
+      // If the user is authenticated and tries to access the login page, redirect them to their last visited page
+      if (pathname === '/login') {
+        router.back(); // Go back to the last page they were on
+      } else {
+        setIsLoading(false); // Allow rendering if not navigating to login
+      }
     } else {
-      setIsLoading(false);
+      setIsLoading(false); // Allow rendering the login page if not authenticated
     }
-  }, [router]);
+  }, [router, pathname]);
 
 
   if (isLoading) {

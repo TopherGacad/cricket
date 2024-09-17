@@ -56,10 +56,12 @@ export default function Dashboard() {
 
   return (
     <>
-      <div className="bg-white">DASHBOARD</div>
-      <button onClick={handleLogout}>
-        Logout
-      </button>
+      <div className="w-full">
+        <div className="bg-white">DASHBOARD</div>
+        <button onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
     </>
   );
 }
