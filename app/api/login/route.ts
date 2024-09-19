@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 // Load the JWT_SECRET from environment variables
-const JWT_SECRET = process.env.JWT_SECRET || "your_secret_key_here";
+const JWT_SECRET = process.env.JWT_SECRET || "";
 
 export const POST = async (request: Request) => {
   try {
