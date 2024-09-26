@@ -24,8 +24,10 @@ export default function Login() {
 
   // Check if the user is already authenticated and redirect if they are
   useEffect(() => {
+   
     const authToken = Cookies.get('authToken');
     if (authToken) {
+      localStorage.setItem('activeMenu', 'dashboard');
       router.push('/dashboard'); // Redirect to dashboard if already logged in
       
     } else {

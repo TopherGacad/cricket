@@ -13,7 +13,14 @@ export function middleware(req: NextRequest) {
   const protectedPages = ['/dashboard', '/settings', '/account'];
 
   // Define protected routes for API (backend)
-  const protectedAPI = ['/api/protected'];
+  const protectedAPI = [
+    '/api/users',
+    '/api/categories',
+    '/api/departments',
+    '/api/login',
+    '/api/tickets',
+    '/api/logout'
+  ];
 
   const requestPath = req.nextUrl.pathname;
 
