@@ -35,18 +35,18 @@ export default function Tabs({ variant }: TabProps) {
 
     return (
         <>
-            <div className="bg-[#fafafa] w-full h-[40px]">
-                <ul className="flex gap-5">
+            <div className="bg-[#EFEFEF] h-full w-full flex items-center">
+                <ul className="flex h-full bg-[#D9D9D9] text-[#797979]">
                     {variant === 'Tickets' ? ticketItems.map((item) => (
                         <li key={item.title}
-                            className={`flex justify-center items-center cursor-pointer ${pathname === item.route ? "bg-gray-300" : ""}`}
+                            className={`flex justify-center items-center cursor-pointer w-[150px] ${pathname === item.route ? "bg-[#fafafa] text-[#352F36]" : ""}`}
                             onClick={() => handleNavigation(item.route)}>
                             {item.icon}
                             {item.title}
                         </li>
                     )) : setupItems.map((item) => (
                         <li key={item.title}
-                            className={`flex justify-center items-center cursor-pointer ${pathname === item.route ? "bg-gray-300" : ""}`}
+                            className={`flex justify-center items-center cursor-pointer w-[150px] ${pathname === item.route ? "bg-[#fafafa] text-[#352F36]" : ""}`}
                             onClick={() => handleNavigation(item.route)}>
                             {item.icon}
                             {item.title}
