@@ -1,16 +1,15 @@
 // /app/login/loading.tsx
 // export default function Loading() {
 //     return (
-//       <div className="h-screen flex justify-center items-center">
+//       <div className="h-screen w-screen flex justify-center items-center">
 //         <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
 //           <span className="visually-hidden">Loading...</span>
 //         </div>
 //       </div>
 //     );
 //   }
-
-import React from "react";
-import "tailwindcss/tailwind.css";
+import React from 'react';
+import 'tailwindcss/tailwind.css';
 
 const Loading = () => {
   return (
