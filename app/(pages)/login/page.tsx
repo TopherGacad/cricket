@@ -117,7 +117,7 @@ export default function Login() {
               required
             />
 
-            <Buttons type="submit" disabled={isLoading}>
+            <Buttons type="submit" disabled={isLoading} fullWidth={true}>
               Login{" "}
               <IoArrowForward className="text-[15px] ml-2 mt-[3px] text-[#352F36]" />
             </Buttons>
