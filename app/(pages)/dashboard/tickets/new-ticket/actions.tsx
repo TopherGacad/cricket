@@ -37,7 +37,7 @@ useEffect(()=>{
 
   return (
     <>  
-        <select name="" id="" form='newTicket'>
+        <select name="" id="" form='newTicket' className='border-[1px] border-solid border-[#C7C7C7] text-[#797979] px-2 w-[60%] h-[40px] focus:ring-2 focus:ring-[#61DADA] focus:border-none'>
             {categories.map((item: any)=>(
                 <option key={item._id} value={item.categoryName}>{item.categoryName}</option>
             ))}
