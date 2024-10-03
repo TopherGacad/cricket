@@ -8,6 +8,12 @@ const UserSchema = new Schema(
         lname: {type: "string", required: true},
         department_id: {type: mongoose.Schema.Types.ObjectId, ref:'Department', required: true},
         password: {type: "string", required: true},
+        mobileNo: {type: "string", required: true, unique: true},
+        role: {
+            type: "string",
+            enum: ["superadmin" , "staff", "employee"],
+            required: true
+        },
         profilePic: {
             data: Buffer,  
             contentType: String, 
