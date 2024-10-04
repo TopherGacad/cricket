@@ -63,8 +63,11 @@ export default function Login() {
         // Redirect to the dashboard after successful login
         router.push("/dashboard");
         setMessage("Login successful!");
+
+        console.log("Login successful. Redirecting to dashboard...");
         setError("");
       } else {
+        console.log("Login failed: ", data.message);
         setError(data.message || "Login failed");
         setMessage("");
       }

@@ -5,6 +5,7 @@ import Loading from "../loading";
 import { Suspense } from "react";
 import CheckAuth from "@/app/api/auth/checkAuth";
 
+
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Gitrush",
@@ -16,7 +17,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <CheckAuth>
+    
       <div className="flex flex-col h-screen w-screen m-0 p-0 bg-[#EFEFEF]">
         <div className="w-full h-[6%] bg-[#fafafa]">
           <Navbar />
@@ -32,6 +33,6 @@ export default function DashboardLayout({
           </div>
         </div>
       </div>
-    </CheckAuth>
+   
   );
 }

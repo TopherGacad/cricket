@@ -6,7 +6,7 @@ const UserSchema = new Schema(
         email: {type: "string", required: true, unique: true},
         fname: {type: "string", required: true},
         lname: {type: "string", required: true},
-        department_id: {type: mongoose.Schema.Types.ObjectId, ref:'Department', required: true},
+        department_id: {type: Schema.Types.ObjectId, ref:'Department', required: true},
         password: {type: "string", required: true},
         mobileNo: {type: "string", required: true, unique: true},
         role: {
