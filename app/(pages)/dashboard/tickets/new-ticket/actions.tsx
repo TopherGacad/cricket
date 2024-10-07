@@ -23,8 +23,10 @@ const NewTicketAction = () => {
         const data = await response.json();
         setCategories(data);
       } catch (error: any) {
+        console.error("Fetch department error:", error);
         setError(error.message);
       }
+      
     };
 
     fetchCategories();
