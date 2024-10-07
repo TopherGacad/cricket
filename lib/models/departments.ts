@@ -1,14 +1,15 @@
 //SCHEMA FOR DEPARTMENTS
-import { Schema, model, models} from "mongoose";
+import mongoose, { Schema, model, models } from "mongoose";
 
 const DepartmentSchema = new Schema(
-    {
-        name: {type: "string", required: true, unique: true},
-        created_by: {type: "string", required: true},
-    },
-    {
-        timestamps: true
-    });
+  {
+    name: { type: "string", required: true },
+    user: { type: Schema.Types.ObjectId, ref: "User" },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 const Department = models.Department || model("Department", DepartmentSchema);
 

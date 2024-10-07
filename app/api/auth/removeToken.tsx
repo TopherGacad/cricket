@@ -1,16 +1,15 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Cookies from "js-cookie"; // We'll use this library to easily manage cookies
-
+import Cookies from "js-cookie";
 import React from "react";
 
 const HandleLogout = () => {
   const router = useRouter();
-  localStorage.clear();
-  
-  const HandleLogout = async () => {
+
+  const handleLogoutClick = async () => {
     try {
+      // Call the logout API to handle server-side logout if necessary
       const response = await fetch("/api/logout", {
         method: "POST",
       });
@@ -21,8 +20,13 @@ const HandleLogout = () => {
         throw new Error(data.message || "Logout failed");
       }
 
-      // Clear cookie on logout
-      Cookies.remove("authToken"); // Remove the authToken cookie
+      // Clear localStorage on logout
+      if (typeof window !== "undefined") {
+        localStorage.clear();
+      }
+
+      // Remove the authToken cookie
+      Cookies.remove("authToken");
 
       // Redirect the user to the login page
       router.push("/login");
@@ -31,7 +35,7 @@ const HandleLogout = () => {
     }
   };
 
-  return <button onClick={HandleLogout}>Logout</button>;
+  return <button onClick={handleLogoutClick}>Logout</button>;
 };
 
 export default HandleLogout;
