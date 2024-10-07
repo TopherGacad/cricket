@@ -30,14 +30,16 @@ const AccountsAction = () => {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
   
+    const form = event.currentTarget;
+  
     const formData = {
-      fname: event.currentTarget.fname.value,
-      lname: event.currentTarget.lname.value,
-      department_id: event.currentTarget.department.value, // Updated to `department_id`
-      role: event.currentTarget.userRole.value,
-      mobileNo: event.currentTarget.mobileNo.value,
-      email: event.currentTarget.email.value,
-      password: event.currentTarget.password.value,
+      fname: form.fname.value,
+      lname: form.lname.value,
+      department_id: form.department.value,
+      role: form.userRole.value,
+      mobileNo: form.mobileNo.value,
+      email: form.email.value,
+      password: form.password.value,
     };
   
     try {
@@ -53,6 +55,9 @@ const AccountsAction = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("User is created:", data);
+  
+        // Clear the form after a successful submission
+        form.reset();
       } else {
         const errorData = await response.json();
         console.error("Error:", errorData.message);
@@ -61,6 +66,7 @@ const AccountsAction = () => {
       console.error("Network error:", error);
     }
   }
+  
   
 
   return (
