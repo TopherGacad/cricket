@@ -7,8 +7,10 @@ import CheckAuth from "@/app/api/auth/checkAuth";
 
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Gitrush",
+  title: {
+    default: "Dashboard - Cricket",
+    template: "%s - Cricket",
+  }
 };
 
 export default function DashboardLayout({

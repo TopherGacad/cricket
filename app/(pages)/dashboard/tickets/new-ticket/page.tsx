@@ -2,6 +2,11 @@ import Buttons from "@/app/components/buttons/buttons";
 import Tabs from "../../components/tabs/tabs";
 import NewTicketAction from "./actions";
 import { FaUpload } from "react-icons/fa";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Creating new ticket"
+}
 
 export default function newTicket() {
   
