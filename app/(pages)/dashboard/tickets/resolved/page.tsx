@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import Tabs from "../../components/tabs/tabs";
+
+export const metadata: Metadata = {
+  title: "Resolved tickets"
+}
 
 export default function resolved() {
   return (

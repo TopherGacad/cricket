@@ -36,7 +36,7 @@ const Buttons: React.FC<ButtonProps> = ({
                 items-center
                 `,
                 disabled && "bg-[#459e9e] text-[#535053] cursor-default",
-                !fullWidth && "bg-[#61DADA] text-[#352F36] w-[120px] cursor-pointer"
+                !fullWidth && "bg-[#61DADA] text-[#352F36] w-[90px] cursor-pointer"
             )}
         >
             {children}

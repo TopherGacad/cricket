@@ -13,7 +13,7 @@ import 'tailwindcss/tailwind.css';
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center bg-gray-100 h-screen">
       <div className="relative w-24 h-24">
         {/* Top-left ticket */}
         <div className="absolute w-12 h-12 bg-blue-500 rounded shadow-md animate-move-top-left"></div>

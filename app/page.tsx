@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Cookies from 'js-cookie';  // For cookie management
 
 const Home = () =>{
   const router = useRouter();

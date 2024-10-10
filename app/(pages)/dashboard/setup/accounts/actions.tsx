@@ -70,7 +70,7 @@ const AccountsAction = () => {
   
 
   return (
-    <form className="bg-gray-400" onSubmit={handleSubmit}>
+    <form className="bg-gray-400 flex flex-col" onSubmit={handleSubmit}>
       <input type="text" name="fname" placeholder="Firstname" />
       <input type="text" name="lname" placeholder="Lastname" />
       <select
