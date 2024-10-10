@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: {
     default: "Dashboard - Cricket",
     template: "%s - Cricket",
+  },
+  icons: {
+    icon: "/img/cricket.svg"
   }
 };
 

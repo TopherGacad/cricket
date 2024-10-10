@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Tabs from "../../components/tabs/tabs";
 
 export const metadata: Metadata = {
-  title: "Your User Profile"
+  title: "Your User Profile",
 }
 
 export default function profiles() {
