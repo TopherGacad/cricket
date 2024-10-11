@@ -18,9 +18,12 @@ interface Department {
 
 const DepartmentAction = () => {
   const [departments, setDepartments] = useState<Department[]>([]);
+  const [loading, setIsLoading] = useState<boolean>(false);
 
   // Step 1: Fetch departments and sort them by createdAt (newest to oldest)
   const fetchDepartments = async () => {
+    setIsLoading(true);
+
     try {
       const response = await fetch("/api/departments");
       if (response.ok) {
@@ -31,6 +34,8 @@ const DepartmentAction = () => {
       }
     } catch (error) {
       console.error("Failed to fetch departments:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -95,8 +100,7 @@ const DepartmentAction = () => {
       </div>
 
       <div className="w-[70%] h-full py-14 px-10 overflow-hidden">
-        {/* Pass the sorted departments to the DepartmentTable */}
-        <DepartmentTable departments={departments} />
+        <DepartmentTable departments={departments} loading={loading} />
       </div>
     </div>
   );

@@ -17,10 +17,11 @@ interface Department {
 }
 
 interface DepartmentTableProps {
-  departments: Department[]; // Expect an array of departments as a prop
+  departments: Department[];
+  loading: boolean; // Expect an array of departments as a prop
 }
 
-const DepartmentTable: React.FC<DepartmentTableProps> = ({ departments }) => {
+const DepartmentTable: React.FC<DepartmentTableProps> = ({ departments, loading}) => {
   console.log("Departments received by table:", departments); // Add this for debugging
 
   return (
@@ -38,7 +39,9 @@ const DepartmentTable: React.FC<DepartmentTableProps> = ({ departments }) => {
           </thead>
 
           <tbody className="z-0">
-            {departments.map((item, index) => (
+            {loading ? (
+             <div>Loading..</div> 
+            ):(departments.map((item, index) => (
               <tr
                 key={item._id}
                 className="text-[#797979] border-b-[1px] text-[14px]"
@@ -65,7 +68,8 @@ const DepartmentTable: React.FC<DepartmentTableProps> = ({ departments }) => {
                   </div>
                 </td>
               </tr>
-            ))}
+            )))}
+            
           </tbody>
         </table>
       </div>
