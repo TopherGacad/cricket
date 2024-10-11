@@ -52,16 +52,16 @@ export const GET = async (request: Request) => {
 
     await connect();
 
-    const user = await User.findById(userId);
-    if (!user) {
+    // Fetch all departments and populate the 'user' field with user details
+    const departments = await Department.find().populate('user', 'fname lname');
+
+    if (!departments) {
       return new NextResponse(
-        JSON.stringify({ message: "User not found in the database" }),
+        JSON.stringify({ message: "No departments found" }),
         { status: 404 }
       );
     }
 
-    // Fetch all departments (remove user-specific filtering)
-    const departments = await Department.find();
     return new NextResponse(JSON.stringify(departments), { status: 200 });
   } catch (error: any) {
     console.error("Error in fetching departments:", error);
@@ -71,6 +71,7 @@ export const GET = async (request: Request) => {
     );
   }
 };
+
 
 export const POST = async (request: Request) => {
   try {
