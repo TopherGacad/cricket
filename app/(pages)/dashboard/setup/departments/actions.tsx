@@ -88,7 +88,7 @@ const DepartmentAction = () => {
         <form onSubmit={handleSubmit} className="w-full">
           <div className="flex flex-col items-center w-full px-5">
             <input
-              className="bg-[#FAFAFA] text-[#797979] border-[1px] border-solid border-[#C7C7C7] w-[80%] p-2"
+              className="bg-[#FAFAFA] text-[#797979] border-[1px] border-solid border-[#C7C7C7] w-[80%] p-2 focus:outline-none focus:border-none focus:ring-[#61DADA] focus:text-[#352f36] focus:ring-2"
               type="text"
               name="departmentName"
               placeholder="Department name"

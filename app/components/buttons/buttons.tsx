@@ -25,7 +25,7 @@ const Buttons: React.FC<ButtonProps> = ({
             className={clsx(
                 `
                 bg-[#61DADA]
-               text-[#352F36]
+               text-[#fafafa]
                 rounded-[5px]
                 w-[450px]
                 h-[40px]
@@ -36,7 +36,7 @@ const Buttons: React.FC<ButtonProps> = ({
                 items-center
                 `,
                 disabled && "bg-[#459e9e] text-[#535053] cursor-default",
-                !fullWidth && "bg-[#61DADA] text-[#352F36] w-[90px] cursor-pointer"
+                !fullWidth && "bg-[#61DADA] text-[#fafafa] w-[90px] cursor-pointer"
             )}
         >
             {children}
