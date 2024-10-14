@@ -8,6 +8,7 @@ interface ButtonProps{
     children?: React.ReactNode;
     onClick?: () => void;
     fullWidth?: boolean;
+    error?: boolean;
 }
 
 const Buttons: React.FC<ButtonProps> = ({
@@ -15,7 +16,7 @@ const Buttons: React.FC<ButtonProps> = ({
     disabled,   
     children,
     onClick,
-    fullWidth
+    fullWidth,
 }) => {
     return(
         <button
@@ -36,8 +37,8 @@ const Buttons: React.FC<ButtonProps> = ({
                 items-center
                 `,
                 disabled && "bg-[#459e9e] text-[#535053] cursor-default",
-                !fullWidth && "bg-[#61DADA] text-[#fafafa] w-[90px] cursor-pointer"
-            )}
+                !fullWidth && "bg-[#61DADA] text-[#fafafa] w-[90px] cursor-pointer",
+            )} 
         >
             {children}
         </button>
