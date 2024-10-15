@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Sidebar from "../admin/dashboard/components/sidebar/sidebar";
-import Navbar from "../admin/dashboard/components/navbar/navbar";
-import Loading from "../loading";
+import Sidebar from "./components/sidebar/sidebar";
+import Navbar from "./components/navbar/navbar";
+import Loading from "../../loading";
 import { Suspense } from "react";
 import CheckAuth from "@/app/api/auth/checkAuth";
 
@@ -30,7 +30,7 @@ export default function DashboardLayout({
 
         <div className="flex h-[94%] w-full">
           <div className="h-full w-[6%] bg-[#fafafa] flex flex-col items-center">
-            <Sidebar variant="employee"/>
+            <Sidebar variant="admin"/>
           </div>
 
           <div className="mx-6 my-5 w-full h-[96%] bg-[#FAFAFA]">

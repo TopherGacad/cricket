@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Middleware function to verify JWT token
+// Middleware function to verify JWT token and role-based access
 export function middleware(req: NextRequest) {
   // Define paths that should be excluded from middleware checks
   const excludedPaths = ['/api/login', '/login'];
@@ -35,8 +35,27 @@ export function middleware(req: NextRequest) {
       throw new Error('Token has expired');
     }
 
-    // Token is valid, allow the request to continue
-    console.log("Token valid. Proceeding with request.");
+    // Extract the role from the decoded payload
+    const userRole = decodedPayload.role;
+    console.log(decodedPayload.role);
+    // Define role-based access rules
+    const isSuperadminPath = req.nextUrl.pathname.startsWith('/admin');
+    const isEmployeePath = req.nextUrl.pathname.startsWith('/dashboard');
+
+    // Check if user has superadmin role for accessing admin paths
+    if (isSuperadminPath && userRole !== 'superadmin') {
+      console.log("Unauthorized. Superadmin access required.");
+      return NextResponse.redirect(new URL('/login', req.url)); // Redirect unauthorized users to login
+    }
+    
+    // Check if user has employee role for accessing employee paths
+    if (isEmployeePath && userRole !== 'employee') {
+      console.log("Unauthorized. Employee access required.");
+      return NextResponse.redirect(new URL('/login', req.url)); // Redirect unauthorized users to login
+    }
+
+    // Token and role are valid, allow the request to continue
+    console.log("Token and role valid. Proceeding with request.");
     return NextResponse.next();
   } catch (error) {
     console.log("Invalid token. Redirecting to login...");
@@ -45,5 +64,13 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/setup/:path*', '/tickets/:path*', '/api/:path*', '/dashboard'],
+  matcher: [
+    '/admin/dashboard/:path*',   // Admin dashboard and subpaths
+    '/admin/tickets/:path*',     // Admin tickets and subpaths
+    '/admin/setup/:path*',       // Admin setup and subpaths
+    '/dashboard/:path*',         // Employee dashboard and subpaths
+    '/dashboard/tickets/:path*', // Employee tickets and subpaths
+    '/dashboard/setup/:path*',   // Employee setup and subpaths
+    '/api/:path*'                // API routes
+  ],
 };

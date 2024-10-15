@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Tabs from "../../components/tabs/tabs";
+
 export const metadata: Metadata = {
   title: "Tickets in Queue"
 }

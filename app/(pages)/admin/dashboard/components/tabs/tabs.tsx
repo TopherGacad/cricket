@@ -17,15 +17,16 @@ export default function Tabs({ variant }: TabProps) {
     const pathname = usePathname();  // Get the current route path
 
     const ticketItems = [
-        { title: "New Ticket", icon: <IoMdAddCircleOutline />, route: "/dashboard/tickets/new-ticket" },
-        { title: "Queue", icon: <HiOutlineQueueList />, route: "/dashboard/tickets/queue" },
-        { title: "Resolved", icon: <IoMdCheckmarkCircleOutline />, route: "/dashboard/tickets/resolved" }
+        { title: "New Ticket", icon: <IoMdAddCircleOutline />, route: "/admin/dashboard/tickets/new-ticket" },
+        { title: "Queue", icon: <HiOutlineQueueList />, route: "/admin/dashboard/tickets/queue" },
+        { title: "Resolved", icon: <IoMdCheckmarkCircleOutline />, route: "/admin/dashboard/tickets/resolved" }
     ];
 
     const setupItems = [
-        { title: "Department", icon: <IoMdAddCircleOutline />, route: "/dashboard/setup/departments" },
-        { title: "Categories", icon: <HiOutlineQueueList />, route: "/dashboard/setup/categories" },
-        { title: "User Profile", icon: <IoMdCheckmarkCircleOutline />, route: "/dashboard/setup/profiles" }
+        { title: "Department", icon: <IoMdAddCircleOutline />, route: "/admin/dashboard/setup/departments" },
+        { title: "Categories", icon: <HiOutlineQueueList />, route: "/admin/dashboard/setup/categories" },
+        { title: "New Account", icon: <IoMdCheckmarkCircleOutline />, route: "/admin/dashboard/setup/accounts" },
+        { title: "User Profile", icon: <IoMdCheckmarkCircleOutline />, route: "/admin/dashboard/setup/profiles" }
     ];
 
     const handleNavigation = (route: string) => {

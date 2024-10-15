@@ -28,16 +28,19 @@ export const POST = async (request: Request) => {
 
     // Generate JWT token on successful login
     const token = jwt.sign(
-      { id: user._id, email: user.email }, // Payload
+      { id: user._id, email: user.email, role: user.role }, // Payload
       JWT_SECRET, // Secret key
       { expiresIn: "1d" } // Token expires in 1 day
     );
+    
 
-    // Return the JWT token along with the success message
+    console.log("User role: ", user.role);
+    // Return the JWT token along with the user's role
     return new NextResponse(
       JSON.stringify({
         message: "Login successful",
         token, // Send the token back to the client
+        role: user.role // Include the role for frontend redirection
       }),
       { status: 200 }
     );
