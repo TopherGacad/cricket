@@ -28,7 +28,7 @@ export const POST = async (request: Request) => {
 
     // Generate JWT token on successful login
     const token = jwt.sign(
-      { id: user._id, email: user.email }, // Payload
+      { id: user._id, email: user.email, role: user.role }, // Payload
       JWT_SECRET, // Secret key
       { expiresIn: "1d" } // Token expires in 1 day
     );
