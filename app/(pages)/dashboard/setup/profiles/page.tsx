@@ -13,7 +13,7 @@ export default function profiles() {
           
         </div>
         
-        <div className="border-[1px] border-solid border-red-600 h-[95%]">
+        <div className="h-[95%]">
           Profiles
         </div>
        

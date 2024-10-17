@@ -82,9 +82,9 @@ const AccountsAction = () => {
     }
   }
 
-  if(success){
-    return<>
-     <div className="shadow-lg flex justify-between items-center top-10 right-10 absolute w-[230px] border-[1px] border-solid border-[#] h-[50px] px-5 bg-[#fafafa] rounded-[5px] transition ease-in-out duration-500">
+  return (
+    <form className="flex flex-col justify-center w-full gap-10 h-full" onSubmit={handleSubmit}>
+      {success && <div className="shadow-lg flex justify-between items-center top-10 right-10 absolute w-[230px] border-[1px] border-solid border-[#] h-[50px] px-5 bg-[#fafafa] rounded-[5px] transition ease-in-out duration-500">
         <FaCheckCircle className="text-[#7FCC75] h-[22px] w-[22px]" />
         <p className="
           text-[#7FCC75]
@@ -94,13 +94,7 @@ const AccountsAction = () => {
             text-[18px]"
             >New user created.
         </p>
-      </div>
-    </>
-  }
-
-  return (
-    <form className="flex flex-col justify-center w-full gap-10 h-full" onSubmit={handleSubmit}>
-     
+      </div>}
       
       <div className="flex justify-between">
         <input className="px-2 border-[1px] border-solid border-[#C7C7C7] w-[46%] h-[40px] focus:outline-none focus:ring-2 focus:ring-[#61DADA] focus:border-none" type="text" name="fname" required placeholder="Firstname" />

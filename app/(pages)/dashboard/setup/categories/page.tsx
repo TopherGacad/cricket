@@ -14,7 +14,7 @@ export default function Categories() {
           
         </div>
         
-        <div className="border-[1px] border-solid border-red-600 h-[95%]">
+        <div className="h-[95%]">
           CAEGORIES PAGE
         </div>
        
