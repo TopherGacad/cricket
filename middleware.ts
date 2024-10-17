@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
+
+
 // Define role-based access control (RBAC) rules
 const rbacRules = {
   superadmin: [
@@ -64,7 +66,9 @@ export function middleware(req: NextRequest) {
     const currentPath = req.nextUrl.pathname;
 
     // Check if the user's role allows access to the current path
+    //@ts-ignore
     const allowedPaths = rbacRules[userRole] || [];
+    //@ts-ignore
     const isAuthorized = allowedPaths.some((allowedPath) => {
       if (allowedPath.includes(':path*')) {
         const basePath = allowedPath.replace(':path*', ''); // Remove the wildcard
